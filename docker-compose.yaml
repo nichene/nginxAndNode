@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+    nodeserver: 
+        build:
+            context: ./node
+            dockerfile: Dockerfile
+        image: nichenevercosa/nodeex:latest
+        container_name: nodeex
+        networks:
+            - mynet
+        ports:
+            - "3000:3000"
+
+    nginx: 
+        restart: always
+        build:
+            context: ./nginx
+            dockerfile: Dockerfile
+        image: nichenevercosa/nginx:latest
+        container_name: nginx
+        networks:
+            - mynet
+        ports:
+            - "8080:80"
+
+networks: 
+    mynet:
+        driver: bridge
+        
