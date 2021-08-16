@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     image: nichenevercosa/nodeex:latest
     container_name: nodeex
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node index.js
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 40s node index.js
     tty: true
     volumes:
       - /usr/src/app/node_modules
@@ -33,7 +33,6 @@ services:
       - nodeserver
 
   db:
-    platform: linux/x86_64
     image: mysql:5.7
     command: --innodb-use-native-aio=0
     container_name: db
