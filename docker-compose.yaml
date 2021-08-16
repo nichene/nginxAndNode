@@ -10,7 +10,7 @@ services:
     entrypoint: dockerize -wait tcp://db:3306 -timeout 20s node index.js
     tty: true
     volumes:
-      - ./node:/usr/src/app
+      - /usr/src/app/node_modules
     networks:
       - mynet
     ports:
